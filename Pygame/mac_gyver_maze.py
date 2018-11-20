@@ -55,15 +55,14 @@ while Main:
 
         while Gaming:
             """The game is played by moving the main character in a maze.
-            Main character is controlled with arrow keys.
-            """
+            Main character is controlled with arrow keys."""
 
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
                     Main = 0
                     Menu = 0
-                    Gaming = 0
+                    Gaming = 0                           
                 elif event.type == KEYDOWN:
                     if event.key == K_RIGHT:
                         hero.move('right')
@@ -73,6 +72,9 @@ while Main:
                         hero.move('up')
                     elif event.key == K_DOWN:
                         hero.move('down')
+            if Gaming == 0:
+                break           
+
 
             #Displaying new positions of the main character
             window.blit(background, (0, 0))
