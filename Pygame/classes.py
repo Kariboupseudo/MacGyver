@@ -38,12 +38,13 @@ class Niveau:
                 else:
                     self.items.append(Item(i, candidate_pos))
         for i in self.items:
-            self.structure[i.poscase_y] = self.structure[i.poscase_y][0:i.poscase_x] + i.display + self.structure[i.poscase_y][i.poscase_x+1:]
+            self.structure[i.poscase_y] = self.structure[i.poscase_y][0:i.poscase_x] \
+            + i.display + self.structure[i.poscase_y][i.poscase_x+1:]
     
     def valid_pos(self, candidate_pos):
         """Check if the position of the item is not already taken by a previously created item"""
         if not self.items:
-            return True
+            answer = True
         else:
             answer = True
             for i, item in enumerate(self.items):
@@ -51,7 +52,7 @@ class Niveau:
                     answer = False
                 elif [candidate_pos[0], candidate_pos[1]] == [2, 2]:
                     answer = False
-            return answer
+        return answer
     
     def load_maze(self):
         """Loading a maze structure from a txt file"""
@@ -153,10 +154,11 @@ class Perso:
             if self.poscase_x < (nb_sprite_cote - 2):
                 #Checking if landing position is already occupied by an item
                 for i in self.items:
-                    if self.level.structure[self.poscase_y][self.poscase_x+1] == i.display and i.show is True:
-                        i.show = False #show status of item is modified if character's move on the item's position
+                    if self.level.structure[self.poscase_y][self.poscase_x+1] \
+                    == i.display and i.show is True:
+                        i.show = False 
                         self.ens2.add(i.display) #Item is added in Character's inventory
-                        self.poscase_x += 1 #Moving by one case
+                        self.poscase_x += 1
                         #Calculation of the character's new position in pixels
                         self.pospix_x = self.poscase_x * taille_sprite
                 #Checking if landing position is the guardian/exit position 
@@ -200,7 +202,8 @@ class Perso:
         if way == "down":
             if self.poscase_y < (nb_sprite_cote - 2):
                 for i in self.items:
-                    if self.level.structure[self.poscase_y+1][self.poscase_x] == i.display and i.show is True:
+                    if self.level.structure[self.poscase_y+1][self.poscase_x] ==\
+                    i.display and i.show is True:
                         i.show = False
                         self.ens2.add(i.display)
                         self.poscase_y += 1
@@ -221,10 +224,11 @@ class Perso:
         lose = pygame.image.load("lose.jpg").convert()
         if len(self.ens2) == len(self.ens1):
             self.conclusion = True
-            return victory
-        elif len(self.ens2) != len(self.ens1):
+            temp = victory
+        else:
             self.conclusion = False
-            return lose
+            temp = lose
+        return temp
 
 class Item:
     '''build an item object with positionning values both in cases and pixels

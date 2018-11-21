@@ -6,9 +6,10 @@ Script Python
 Files : mac_gyver_maze.py, classes.py, constants.py, maze.txt + 13 images
 """
 import pygame
-from pygame.locals import* #import pygame constants
-from constants import*
-from classes import*
+from pygame.locals import QUIT, KEYDOWN, K_ESCAPE, K_RETURN,\
+                            K_LEFT, K_RIGHT, K_UP, K_DOWN #import pygame constants
+from constants import side_window
+from classes import Niveau, Perso
 
 pygame.init()
 
@@ -54,15 +55,15 @@ while Main:
             hero = Perso(level, level.items)
 
         while Gaming:
-            """The game is played by moving the main character in a maze.
-            Main character is controlled with arrow keys."""
+            #The game is played by moving the main character in a maze.
+            #Main character is controlled with arrow keys."""
 
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
                     Main = 0
                     Menu = 0
-                    Gaming = 0                           
+                    Gaming = 0          
                 elif event.type == KEYDOWN:
                     if event.key == K_RIGHT:
                         hero.move('right')
@@ -73,8 +74,7 @@ while Main:
                     elif event.key == K_DOWN:
                         hero.move('down')
             if Gaming == 0:
-                break           
-
+                break
 
             #Displaying new positions of the main character
             window.blit(background, (0, 0))
@@ -109,7 +109,7 @@ while Main:
                         Gaming = 0
                         Ending = 0
                     elif event.type == KEYDOWN and event.key == K_RETURN:
-                        """Game over screen"""
+                            #Game over screen
                         thanks = pygame.image.load("thanks.jpg").convert()
                         Ending = 0
                         window.blit(thanks, (30, 30))
