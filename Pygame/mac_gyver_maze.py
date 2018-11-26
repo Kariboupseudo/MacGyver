@@ -2,7 +2,7 @@
 Game "Help MacGyver to escape !"
 It's a game where you need to move MacGyver in a maze in order to get out of it.
 MacGyver needs to collect 3 items to be able to beat the guardian.
-Script Python
+Python scripts
 Files : mac_gyver_maze.py, classes.py, constants.py, maze.txt + 13 images
 """
 import pygame
@@ -17,9 +17,9 @@ pygame.init()
 window = pygame.display.set_mode((side_window, side_window))
 
 """Loading home screen image"""
-home = pygame.image.load("accueil.png").convert()
+home = pygame.image.load("images/accueil.png").convert()
 """Loading background"""
-background = pygame.image.load("background.jpg").convert()
+background = pygame.image.load("images/background.jpg").convert()
 
 """Main loop"""
 Main = 1
@@ -110,7 +110,7 @@ while Main:
                         Ending = 0
                     elif event.type == KEYDOWN and event.key == K_RETURN:
                             #Game over screen
-                        thanks = pygame.image.load("thanks.jpg").convert()
+                        thanks = pygame.image.load("images/thanks.jpg").convert()
                         Ending = 0
                         window.blit(thanks, (30, 30))
                         pygame.display.flip()

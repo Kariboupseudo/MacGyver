@@ -68,21 +68,21 @@ class Niveau:
         """Displaying a maze structure associating letters with images"""
 
         #Wall element
-        wall = pygame.image.load("mur.png").convert()
+        wall = pygame.image.load("images/mur.png").convert()
         #start element
-        start = pygame.image.load("depart.png").convert()
+        start = pygame.image.load("images/depart.png").convert()
         #Goal element
-        goal = pygame.image.load("Gardien.png").convert()
+        goal = pygame.image.load("images/Gardien.png").convert()
         #Item A
-        needle = pygame.image.load("needle.png").convert()
+        needle = pygame.image.load("images/needle.png").convert()
         #Item B
-        syringe = pygame.image.load("syringe.png").convert()
+        syringe = pygame.image.load("images/syringe.png").convert()
         #Item C
-        pipe = pygame.image.load("pipe.png").convert()
+        pipe = pygame.image.load("images/pipe.png").convert()
         #Decoration element
-        swiss = pygame.image.load("swiss.jpg").convert()
+        swiss = pygame.image.load("images/swiss.jpg").convert()
         #Phoenix Foundation Logo
-        phoenix = pygame.image.load("phoenix.png").convert()
+        phoenix = pygame.image.load("images/phoenix.png").convert()
 
         """double loop to check every character of the txt file"""
         num_line = 0
@@ -140,7 +140,7 @@ class Perso:
         self.poscase_y = 2
         self.pospix_x = self.poscase_x * taille_sprite
         self.pospix_y = self.poscase_y * taille_sprite
-        self.MG_Display = pygame.image.load("MacGyver.png").convert()
+        self.MG_Display = pygame.image.load("images/MacGyver.png").convert()
         self.level = level
         self.items = items
         self.ens1 = {"A", "B", "C"}
@@ -219,9 +219,9 @@ class Perso:
         and return of a contextual image'''
     
         """victory screen"""
-        victory = pygame.image.load("victory.jpg").convert()
+        victory = pygame.image.load("images/victory.jpg").convert()
         """lose screen"""
-        lose = pygame.image.load("lose.jpg").convert()
+        lose = pygame.image.load("images/lose.jpg").convert()
         if len(self.ens2) == len(self.ens1):
             self.conclusion = True
             temp = victory
