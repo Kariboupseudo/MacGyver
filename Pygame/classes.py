@@ -37,7 +37,7 @@ class Niveau:
                     self.items = []
                 else:
                     self.items.append(Item(i, candidate_pos))
-        for i in self.items:
+        for i in self.items:#slicing objets in self.structure
             self.structure[i.poscase_y] = self.structure[i.poscase_y][0:i.poscase_x] \
             + i.display + self.structure[i.poscase_y][i.poscase_x+1:]
     
